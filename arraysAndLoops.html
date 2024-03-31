@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays and Loops</title>
+</head>
+<body>
+    
+
+    <script>
+
+
+        let myArray=[1,'a',{name:'aryan',place:'up'},true,null,undefined,BigInt(2434324234332342342),Symbol(0)];
+        console.log(myArray);
+        console.log(myArray[2]);
+        console.log(myArray[4]);
+        myArray[4]='was null inititally but not anymore';
+        console.log(myArray[4]);
+        myArray[8]='new index';
+        console.log(myArray);
+        console.log(Array.isArray(myArray)); //to check if myArray is an array
+        console.log(myArray.length);
+        console.log(myArray.push('pushedElement')); //length of the array after pushing the value in the bracket will be printed because push is a function of the array object which returns the new length of the array 
+        console.log(myArray);
+        console.log(myArray.splice(0,3)); // 0th index se 3 values remove krdo, this function returns the spliced/removed values in the form of an array
+        console.log(myArray);
+
+
+        let a=[3,4,6,3,4,645,74,52,6,,68,5,4,645,3],c,d;
+        // let objj={max:null,min:undefined}; //works ofc
+        let objj={}; //works too
+        let maxMin=(a)=>{
+            c=a[0];d=a[0];
+            if(a.length<1)
+            {
+                objj.max=null;
+                objj['min']=null;
+            }
+            else if(a.length===1)
+            {
+                objj.max=a[0];
+                objj['min']=a[0];
+            }
+            else
+            {
+            for(let i=0;i<a.length;i++)
+            {
+                if(a[i]>c)
+                {
+                    c=a[i];
+                }
+            }
+            for(let i=0;i<a.length;i++)
+            {
+                if(a[i]<d)
+                {
+                    d=a[i];
+                }
+            }
+            objj.max=c; //this is right cause 'max' is not a variable 
+            objj['min']=d;
+        }
+            console.log(objj);
+        }
+        maxMin(a);
+
+
+        let countWords=()=>{
+            let a =['apple','apple','apple','grape','grape'];
+            let ob={};
+            for(let i=0;i<a.length;i++)
+            {
+                const fruit=a[i];
+                if(!ob[fruit]){ //checking if value of the key [fruit] created in the object ob is undefined or null, if yes then assigning it with 1 cause there is a fruit in the array which is in the object now 
+                    ob[fruit]=1;//fruit is a variable so we'll need to use the bracket notation, not the dot notation
+                }
+                else{
+                    ob[fruit]++; //after the key i.e the fruit has some value, we'll increase it everytime there's a same fruit in the array
+                }
+            }
+            console.log(ob);
+        }
+        countWords();
+
+
+        const arr=[1,2,3]; //arr is just a reference which is pointing towards the array [1,2,3] stored somewhere in the computer's memory
+        const arr2=arr; //arr2 copies the reference arr, not the value of arr
+        console.log(arr,arr2);
+        arr2.push(98); //as arr2 is just a reference which points to the same array in the memory as arr, so any change in values of arr2 will result in the changement of the values in arr too and vice versa, to overcome this we use a function called "slice".
+        console.log(arr,arr2);
+        const arr3=arr2.slice(); //this means copying the array in the memory to which arr2 points to arr3. A new array will be created in the memory somewhere and arr3 will be pointing towards it
+        console.log(arr3);
+        arr2.push(90); //value won't be pushed in arr3 cause arr3 points to another array in the memory
+        console.log(arr,arr2,arr3);
+
+        const [firstValue,secondValue,thirdValue]=[1,2,3]; //firstValue will have the value of the respective index of the array and so on
+        console.log(firstValue,secondValue,thirdValue); //1 2 3
+
+
+        let cars=['mercedes','maybach','rolls royce','hummer','bmw','audi','jaguar','range rover','cullinan','bugatti','mercedes','maybach','rolls royce','hummer','bmw','audi','jaguar','range rover','cullinan','bugatti'];
+        let carOb={},car;
+
+        let countCars=()=>{
+            for(let i=0;i<cars.length;i++)
+            {
+                car=cars[i];
+                if(!carOb[car])
+                {
+                    carOb[car]=1;
+                }
+                else{
+                    carOb[car]++;
+                }
+            }
+            console.log(carOb);
+        }
+        countCars();
+
+    </script>
+
+
+</body>
+</html>

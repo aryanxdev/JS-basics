@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      const product = console.log(
+        JSON.parse(localStorage.getItem("product"))
+      ) || {
+        name: "Shirt",
+        ["name-2"]: "Full sleeved shirt",
+        price: "$200",
+        ["delivery-date"]: "12 Aug, 2023",
+
+        rating: {
+          //nested objects
+          stars: 4.5,
+          count: 987,
+          ["howManyPeopleHaveBought"]: 2051,
+          fun(name) {
+          console.log(`hi,${name}`);
+          },
+        },
+
+        // fun: function f1(name) {
+        //   console.log(`hi,${name}`);
+        // },
+        fun(name) {
+          console.log(`hi,${name}`);
+        },
+      };
+
+      (product.fun('bhaiiiiiiii'));
+      (product.rating.fun('bhaiiiiiiii'));
+      console.log(product.name); //console is a object provided by JS and log is a function in the console object
+      console.log(product["name-2"]);
+      console.log(product.price);
+      console.log(product["delivery-date"]);
+
+      console.log(product.rating.stars); //object product k andar object rating ki stars naam ki key
+      console.log(product.rating.count); //object product k andar object rating ki count naam ki key
+      console.log(product.rating["howManyPeopleHaveBought"]); //object product k andar object rating ki howManyPeopleHaveBought naam ki key
+
+      product.fun("aryan"); // a function inside the object becomes a METHOD
+
+      console.log(typeof console, ",", typeof console.log);
+
+      console.log(JSON.stringify(product)); //now this JSON string is ready to be sent to another computer or to be saved in local storage
+
+      const JsonString = JSON.stringify(product); //converting the object product to a string
+      console.log(JSON.parse(JsonString)); //conveting(parsing) the (object converted string) to object again
+
+      localStorage.setItem("name", "valueStored"); //name is how we access the value stored in the local storage. we can only write strings inside the bracket above
+      console.log(localStorage.getItem("name")); //accessing the value stored in the local storage by the name we provided i.e 'name'
+
+      localStorage.setItem("product", JSON.stringify(product)); //converting the product object to a stirng cause localStorage only takes string as an argument
+      console.log(product);
+
+      //Auto-boxing, strings are not any object but still have values and methods
+      console.log("hello i am aryan".length); // js wraps 'hello, i am aryan' string into a special object autmatically and then that object has all sorts of properties and methods
+      console.log("hello i am aryan".toUpperCase());
+
+      // OBJECTS ARE REFERENCES
+
+      const object1 = {
+        //this variable just contains the reference that points to the object
+        name: "Aryan",
+        place: "Scaler",
+        age: 19,
+      };
+
+      object2 = object1; //we're not actually copying the object but we're copying the reference to the object, object2 has the same reference as object1 which point to the same object in the memory
+
+      object1.name = "Sagar";
+      object1.place = "home";
+
+      console.log(object1);
+      console.log(object2); //object2 ki bhi values change hogi
+
+      //we can't compare the objects directly
+
+      object3 = {
+        name: "Aryan",
+        place: "Scaler",
+        age: 19,
+      };
+
+      console.log(object1 === object3); //even tho both the references have the same object keys and values but they are pointing to the different objects in the computer's memory so they're not equal
+
+      console.log(object1 === object2); //this will be true because both the references are pointing towards the same object in the memory
+
+      //remember that when we compare two variables which have objects inside, we're not comparing the values inside but the references
+
+      console.log(object1.name === object3.name); //false
+      console.log(object1.age === object3.age); //true
+
+      //shorthand properties to write objects
+
+      const obj = {
+        message: "hello",
+        price: 60,
+      };
+
+      // const message=obj.message;
+      const { message, price } = obj; //this line works the same as the above one but is short and saves time
+      console.log(message, price);
+
+      const obj2 = {
+        // message:message,
+        message, //does the same thing as above
+        // price:price
+        price, //does the same thing as above
+
+        // fun:function f1(name){
+        //     console.log(name);
+        // }
+        fun(name) {
+          //does the same thing as the code above
+          console.log(name);
+        },
+      };
+      console.log(obj2);
+      console.log(obj2.fun("sagar"));
+
+      const prod1 = { name: "afjhasb", price: 40 };
+      const prod2 = { name: "odinods", price: 70 };
+      const pro1 = (prod1, prod2) => {
+        // return Math.min(prod1.price,prod2.price);
+        if (prod1.price < prod2.price) {
+          console.log(prod1);
+        } else {
+          console.log(prod2);
+        }
+      };
+      pro1(prod1, prod2);
+
+      let str = "heyo";
+      console.log(str.repeat(5));
+
+      let str2 = "ARYAN SAGAR";
+      console.log(str2.toLowerCase());
+
+      let exobj = {
+        name: "Aryan",
+        place: "CU",
+        animal: "dk",
+        thing: "money",
+      };
+      console.log(exobj);
+      exobj2 = exobj; //exobj2 now has the reference that exobj has
+      console.log(exobj2);
+      exobj2.new = 45; //adding a new property to the exobj2 object but remember that exobj2 nad exobj are pointing towards the same reference in the computer's memory so that property will also be added to the exobj object
+      console.log(exobj);
+      console.log(exobj2);
+
+      let Anobject = {
+        klkjnvsd: "gsdgsd",
+        dkvjbsdibsd: "kjdbd",
+        fun(name) {
+          console.log(name);
+        },
+      };
+      console.log(JSON.stringify(Anobject)); //as the json syntax does not support functions so it won't even access the function inside the object Anobject
+    </script>
+  </body>
+</html>

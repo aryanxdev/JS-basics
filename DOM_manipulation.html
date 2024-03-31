@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    
+    <button class="domdummy1">BUTTON</button>
+    <button class="domdummy2">BUTTON-1</button>
+
+    <button class="ex">innerHTML and innerText</button>
+    
+    <script>
+
+
+    console.log(document.title);
+    document.title='DOM Manipulation'; //targets the title of the web page
+    console.log(document.title);
+
+    console.log(document.body);
+    console.log(typeof document.body);
+
+    // document.body.innerHTML='<button>BUTTON-2</button>'; //will change the HTML on our page
+
+    document.querySelector('.domdummy1').innerHTML='buttonch'; //HTML inside the button element will be changed
+    document.querySelector('.domdummy2').innerHTML='buttonch2'; //anything that can be used in css an be used here inside the querySelector brackets
+
+    //HTML elements are just javascript objects, they can be stored in a variable
+
+    const buttonLm=document.querySelector('.domdummy2');
+    console.log(buttonLm.innerHTML);
+
+    console.log(String(1342424),typeof String(1342424));
+    console.log('25' - 5); //25 will automatically be converted to a number and 25-5 will happen and 20, a number will be the output
+    console.log('25' + 5); //concatination will happen and 255, a string will be the output
+
+    let bheem=document.querySelector('.ex').innerHTML;
+    let bheeem=document.querySelector('.ex').innerText;
+    console.log(bheem);
+    console.log(bheeem);
+
+    </script>
+
+
+</body>
+</html>

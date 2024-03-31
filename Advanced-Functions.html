@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <button onclick="" class="clicking">Click</button>
+    <!-- we'll use addEventListener function inside the script element which works the same way as the onclick attribute -->
+
+    <script>
+      function function1(param) {
+        param(); //because we are passing a function to param i.e. param is now a function so we'll need to call that function, not the function to which param is a parameter
+      }
+      function1(function () {
+        //this function passed as a parameter in the above function is known as a CALLBACK function
+        console.log("hi");
+        console.log(2 + 2);
+        console.log("2" + 2);
+      });
+
+      // setTimeout(); //setTimeOut is a built-in function of JS, which allows us to run a function after a certain amount of time. It takes 2 values as parameters, 1st is the function()(we need to write and define the function then and there itself) we want to delay and 2nd is the number of "MILISECONDS" by which we want the function to delay
+
+      let aa = () => {
+        console.log("after 3 seconds");
+      };
+
+      setTimeout(() => {
+        console.log("timeout1");
+        console.log("timeout2"); //if we directly pass aa() here as the first argument, it'll run the function and no delay will be added cause there is no delay added in the function. it is just a simple function which needs to be run when called.
+      }, 3000); //js just sets up the timer and goes to the next line of code, it won't wait for that line to finish. THIS IS CALLED ASYNCHRONOUS CODE
+      // Synchronous code on the other hand will wait for one line to finish before going to the other line of code
+      //all the code we generally write is synchronous, code is asynchronous only when written using certain functions of Javascript
+      //Advantage of asynchronous code is that it doesn't block our code for 3 seconds, it just sets the timer and moves on to the next line
+      console.log("next line");
+
+      // setInterval(() => {
+      //     console.log("interval");
+      // },5000);
+      //this is an asynchronous function which takes 2 parameters, 1st a function and 2nd is the amount of time, for example 3 seconds, so it will run the function passed as 1st parameter every 3 seconds. INTERVAL WILL BE PRINTED IN THE CONSOLE EVERY 5 SECONDS. computer will set a timer and move to the next line and execute it
+
+      console.log("next line 2");
+
+      ["aryan", "sagar", "verma"].forEach(function (value, i) {
+        //value will have the array element on a particular index and i will have the index of the values. ALWAYS REMEMBER THAT FIRST PARAMETER MEIN VALUES STORE HOTI AND SECOND MEIN INDICES
+        console.log(value, i);
+      });
+
+      let arr = [1, 2, 3, 4, 5, 6];
+      arr.forEach(function (val) {
+        if (val === 2) {
+          return; //foreach does not support the continue stt so u can use the return stt which works the same as continue with foreach
+        }
+        console.log(val);
+      });
+      // if you want to use break, don't use foreach. use the regular for loop instead
+
+      const evenlistener = () => {
+        console.log("clicked");
+      };
+
+      const belem = document.querySelector(".clicking");
+      /*aadding the eventListener*/ belem.addEventListener("click", () => {
+        evenlistener();
+      }); //listening for a click here
+
+      /*removing the eventListener*/ belem.removeEventListener("click", () => {
+        evenlistener();
+      }); //listening for a click here and removing the eventListener that happnes on the click. //as the eventListener is removed so on clicking the button evenListener function will not be called
+
+      belem.addEventListener("click", () => {
+        console.log("clicked2");
+      });
+
+      //we can add multiple listeners to a single event
+
+      const nums = [1, 2, 3, 4, 5];
+      num = nums.reduce((a, b) => a + b, 0); //0 is an accumulator, starting mein 0+1 hua then 1+2 and so on and so forth
+      console.log(num);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js-basics</title>
+  </head>
+
+  <body>
+    <button
+      title="subscribe to the author"
+      onclick="
+        alert('thanks man');"
+    >
+      SUBSCRIBE
+    </button>
+
+    <p>Adults Plain Cotton T-shirt</p>
+    <p>Price:$7.99</p>
+    <button onclick="console.log('added')">Add To Cart</button>
+    <button onclick="console.log('thanks for buying')">Buy Now</button>
+
+    <!-- cart quantity -->
+
+    <p style="padding-top: 10px">Cart quantity</p>
+    <button
+      onclick="
+        console.log('Cart Quantity: '+cart_quantity);"
+    >
+      Show Quantity
+    </button>
+    <button
+      onclick="
+      if(cart_quantity<10)
+      {
+        cart_quantity=cart_quantity+1;
+        console.log(`Cart Quantity: ${cart_quantity}`);
+      }
+    else{
+        console.log(`Cart is full`);
+      }
+    "
+    >
+      Add to Cart
+    </button>
+    <button
+      onclick="
+      if(cart_quantity<=8)
+      {
+        cart_quantity=cart_quantity+2;
+    console.log(`Cart Quantity: ${cart_quantity}`);
+    }
+    else{
+        console.log(`Cannot add 2 more products.`);
+    }"
+    >
+      +2
+    </button>
+    <button
+      onclick="
+      if(cart_quantity<=7)
+      {
+        cart_quantity=cart_quantity+3;
+    console.log(`Cart Quantity: ${cart_quantity}`);
+    }
+    else{
+        console.log(`Cannot add 3 more products.`);
+    }"
+    >
+      +3
+    </button>
+    <button
+      onclick="
+    if(cart_quantity>0)
+    {
+      cart_quantity-=1;
+      console.log(`Removed from the cart.`);
+      console.log('Cart Quantity: '+cart_quantity);
+    }
+    else
+    {
+      console.log(`Cart is empty.`);
+    }
+    "
+    >
+      Remove from Cart
+    </button>
+    <button
+      onclick="
+    if(cart_quantity>0)
+    {
+    cart_quantity=0;
+    console.log('Cart was Reset');
+    console.log('Cart Quantity: '+cart_quantity);
+    }"
+    >
+      Reset Cart
+    </button>
+
+    <script>
+      let cart_quantity = 0;
+    </script>
+
+    <!-- cart quantity -->
+  </body>
+</html>
